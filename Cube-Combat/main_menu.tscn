@@ -97,3 +97,5 @@ theme_override_font_sizes/font_size = 50
 text = "Cube Combat"
 
 [connection signal="pressed" from="VBoxContainer/Game Start" to="." method="_on_game_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

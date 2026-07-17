@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://jryjdd1q7ae0"]
+
+[ext_resource type="Script" uid="uid://diitksuqg5ulb" path="res://Scene/Menu's/volume.gd" id="1_ovhlf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovhlf"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfa8d"]
+bg_color = Color(0.18000486, 0.1800049, 0.1800048, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3yi8"]
+bg_color = Color(0.3366076, 0.33660764, 0.33660752, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 15
+
+[node name="Settings" type="Control" unique_id=517061732]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=445379333]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=14253649]
+layout_mode = 2
+
+[node name="Volume Slider" type="Label" parent="MarginContainer/VBoxContainer" unique_id=737247014]
+layout_mode = 2
+text = "Volume Slider"
+
+[node name="Volume" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=278893883]
+layout_mode = 2
+script = ExtResource("1_ovhlf")
+
+[node name="Mute toggle" type="CheckBox" parent="MarginContainer/VBoxContainer" unique_id=278987994]
+layout_mode = 2
+text = "Mute Volume "
+
+[node name="Back" type="Button" parent="." unique_id=1357024138]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 544.0
+offset_right = 304.0
+offset_bottom = 632.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_ovhlf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rfa8d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b3yi8")
+text = "Back to main menu "
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Volume" to="MarginContainer/VBoxContainer/Volume" method="_on_volume_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Mute toggle" to="MarginContainer/VBoxContainer/Volume" method="_on_mute_toggle_toggled"]
+[connection signal="pressed" from="Back" to="MarginContainer/VBoxContainer/Volume" method="_on_back_pressed"]
