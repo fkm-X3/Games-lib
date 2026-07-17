@@ -51,9 +51,9 @@ func start_attack(attack_type: String) -> void:
 		# If using an AnimationPlayer, you would call: $AnimationPlayer.play("heavy_attack")
 	
 	# TEMPORARY: Right now, we use a quick timer to reset the attack state.
-	# In a real game, you will hook this up to your AnimationPlayer's "animation_finished" signal.
+	# Eventually you will hook this up to the AnimationPlayer's "animation_finished" signal.
 	await get_tree().create_timer(0.4).timeout
 	_on_attack_finished()
-
+	
 func _on_attack_finished() -> void:
 	is_attacking = false
