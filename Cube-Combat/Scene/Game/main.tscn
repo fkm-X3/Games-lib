@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cqow47bch5ocs"]
 
-[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://Scene/Game/player.tscn" id="1_f4tam"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(53.161312, 8.312637)
@@ -48,5 +48,5 @@ shape = SubResource("RectangleShape2D_g4v7s")
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Node2D" parent="." unique_id=181259765 instance=ExtResource("1_jjgbg")]
+[node name="Node2D" parent="." unique_id=181259765 instance=ExtResource("1_f4tam")]
 position = Vector2(488, 176)
