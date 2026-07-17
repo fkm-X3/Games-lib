@@ -8,6 +8,10 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 # Track if the player is currently locked in an attack animation
 var is_attacking: bool = false
 
+func _process(delta):
+	if Input.is_action_just_pressed("quit_match"):
+		get_tree().change_scene_to_file("res://main_menu.tscn")
+
 func _physics_process(delta: float) -> void:
 	# Apply Gravity (still applies while attacking so you can fall/jump-attack)
 	if not is_on_floor():
