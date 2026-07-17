@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ckudr8chj1kgo"]
+
+[ext_resource type="Script" uid="uid://bjupamf3a6627" path="res://player/state_machine.gd" id="1_g1dw6"]
+[ext_resource type="Script" uid="uid://csio0kgcstpl8" path="res://player/player.gd" id="1_yw30f"]
+[ext_resource type="Script" uid="uid://dwhw21fmr4sh4" path="res://player/states/move_state.gd" id="2_yw30f"]
+[ext_resource type="Script" uid="uid://kmjsc4w31t0r" path="res://player/states/attack_state.gd" id="3_qjkh3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(40, 40)
+
+[node name="Player" type="Node2D" unique_id=181259765]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=997201221]
+scale = Vector2(2, 2)
+script = ExtResource("1_yw30f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1147482345]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="ColorRect" type="ColorRect" parent="Player" unique_id=1393979435]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 1, 1)
+
+[node name="StateMachine" type="Node" parent="Player" unique_id=683358118 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_g1dw6")
+initial_state = NodePath("MoveState")
+metadata/_custom_type_script = "uid://bjupamf3a6627"
+
+[node name="MoveState" type="Node" parent="Player/StateMachine" unique_id=757117755]
+script = ExtResource("2_yw30f")
+metadata/_custom_type_script = "uid://dwhw21fmr4sh4"
+
+[node name="AttackState" type="Node" parent="Player/StateMachine" unique_id=1747123404]
+script = ExtResource("3_qjkh3")
+metadata/_custom_type_script = "uid://kmjsc4w31t0r"
