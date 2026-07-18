@@ -1,0 +1,3 @@
+HEX: ff69b4
+Hp: 100
+Attacks: Slash, Shield

@@ -1,0 +1,3 @@
+HEX: 8b4513
+Hp: 75
+Attacks: Kick, Laser

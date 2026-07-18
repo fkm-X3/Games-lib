@@ -1,0 +1,3 @@
+HEX: 008000
+Hp: 100
+Attacks: Slash, Laser

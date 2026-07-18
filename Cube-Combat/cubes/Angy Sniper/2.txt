@@ -1,0 +1,3 @@
+HEX: ff0000
+Hp: 100
+Attacks: Dash (No CD), Laser

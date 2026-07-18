@@ -1,0 +1,3 @@
+HEX: 2f4f4f
+Hp: 125
+Attacks: Takedown, Drone Support
