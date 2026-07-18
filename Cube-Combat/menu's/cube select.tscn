@@ -2,6 +2,30 @@
 
 [ext_resource type="Script" uid="uid://cgp1vftdcqpy3" path="res://menu's/cube_select.gd" id="1_hvuif"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvuif"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8bcx"]
+bg_color = Color(0.18000486, 0.1800049, 0.1800048, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e3npc"]
+bg_color = Color(0.3366076, 0.33660764, 0.33660752, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 15
+
 [node name="CubeSelect" type="Control" unique_id=1853102831]
 layout_mode = 3
 anchors_preset = 15
@@ -75,22 +99,61 @@ offset_right = 352.0
 offset_bottom = 352.0
 text = "Placeholder"
 
-[node name="Stats" type="Node" parent="." unique_id=1702219602]
+[node name="Panel" type="Panel" parent="." unique_id=2023375624]
+layout_mode = 0
+offset_left = 768.0
+offset_top = 67.0
+offset_right = 1144.0
+offset_bottom = 640.0
 script = ExtResource("1_hvuif")
 
-[node name="Lable" type="Label" parent="Stats" unique_id=789151313]
-offset_left = 768.0
-offset_top = 64.0
-offset_right = 1034.0
-offset_bottom = 100.0
+[node name="ColorRect" type="ColorRect" parent="Panel" unique_id=1041428236]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 61.0
+offset_right = 112.0
+offset_bottom = 157.0
+
+[node name="Lable" type="Label" parent="Panel" unique_id=789151313]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -133.0
+offset_right = 133.0
+offset_bottom = 36.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 26
 text = "Stats of Chosen Cube"
 horizontal_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="Stats" unique_id=1041428236]
-offset_left = 768.0
-offset_top = 128.0
-offset_right = 864.0
-offset_bottom = 224.0
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel" unique_id=971918995]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 61.0
+offset_right = 360.0
+offset_bottom = 317.0
 
-[connection signal="pressed" from="Sword Master" to="Stats" method="_on_sword_master_pressed"]
+[node name="Proceed_to_game" type="Button" parent="Panel" unique_id=1471700802]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -88.0
+offset_right = 180.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_hvuif")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d8bcx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e3npc")
+text = "Proceed to game "
+
+[connection signal="pressed" from="Sword Master" to="Panel" method="_on_sword_master_pressed"]
+[connection signal="pressed" from="Panel/Proceed_to_game" to="Panel" method="_on_proceed_to_game_pressed"]
