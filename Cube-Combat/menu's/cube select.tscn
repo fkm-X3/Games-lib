@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://b1bdk7bvnvhdv"]
+
+[ext_resource type="Script" uid="uid://cgp1vftdcqpy3" path="res://menu's/cube_select.gd" id="1_hvuif"]
+
+[node name="CubeSelect" type="Control" unique_id=1853102831]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=1565195370]
+layout_mode = 0
+offset_top = -16.0
+offset_right = 1152.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 60
+text = "Choose your cube"
+horizontal_alignment = 1
+
+[node name="Sword Master" type="Button" parent="." unique_id=962121837]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 64.0
+offset_right = 160.0
+offset_bottom = 192.0
+
+[node name="ColorRect" type="ColorRect" parent="Sword Master" unique_id=1421969519]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 112.0
+offset_bottom = 112.0
+mouse_filter = 2
+color = Color(0, 0, 1, 1)
+
+[node name="2" type="Button" parent="." unique_id=536267878]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 64.0
+offset_right = 352.0
+offset_bottom = 192.0
+text = "Placeholder"
+
+[node name="3" type="Button" parent="." unique_id=2046581462]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 64.0
+offset_right = 544.0
+offset_bottom = 192.0
+text = "Placeholder"
+
+[node name="4" type="Button" parent="." unique_id=394984082]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 64.0
+offset_right = 736.0
+offset_bottom = 192.0
+text = "Placeholder"
+
+[node name="5" type="Button" parent="." unique_id=2021269919]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 224.0
+offset_right = 160.0
+offset_bottom = 352.0
+text = "Placeholder"
+
+[node name="6" type="Button" parent="." unique_id=600059421]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 224.0
+offset_right = 352.0
+offset_bottom = 352.0
+text = "Placeholder"
+
+[node name="Stats" type="Node" parent="." unique_id=1702219602]
+script = ExtResource("1_hvuif")
+
+[node name="Lable" type="Label" parent="Stats" unique_id=789151313]
+offset_left = 768.0
+offset_top = 64.0
+offset_right = 1034.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 26
+text = "Stats of Chosen Cube"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Stats" unique_id=1041428236]
+offset_left = 768.0
+offset_top = 128.0
+offset_right = 864.0
+offset_bottom = 224.0
+
+[connection signal="pressed" from="Sword Master" to="Stats" method="_on_sword_master_pressed"]
