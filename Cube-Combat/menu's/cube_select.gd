@@ -6,9 +6,10 @@ var cube_stat_HP = 0
 var cube_stat_attack1 = "placeholder"
 var cube_stat_attack2 = "placeholder"
 
-# Where the ColorReact and Lable are
+# Where the UI nodes are
 @onready var lable: Label = $Lable
 @onready var color_rect: ColorRect = $ColorRect
+@onready var rich_text_label: RichTextLabel = $RichTextLabel
 
 func _on_sword_master_pressed() -> void:
 	# Setting variables for Sword master
@@ -21,6 +22,9 @@ func _on_sword_master_pressed() -> void:
 
 func view_stats():
 	if cube_selected == 1:
+		# Showcase RichTextLabel
+		rich_text_label.text = "[b]HP:[/b] %d\n[b]Attack 1:[/b] %s\n[b]Attack 2:[/b] %s" % [cube_stat_HP, cube_stat_attack1, cube_stat_attack2]
+		
 		# Placeholder debug prints
 		print("Cube was selected")
 		print(cube_stat_HP)

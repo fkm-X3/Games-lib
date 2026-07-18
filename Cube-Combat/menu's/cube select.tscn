@@ -133,6 +133,7 @@ offset_left = 128.0
 offset_top = 61.0
 offset_right = 360.0
 offset_bottom = 317.0
+bbcode_enabled = true
 
 [node name="Proceed_to_game" type="Button" parent="Panel" unique_id=1471700802]
 layout_mode = 1
