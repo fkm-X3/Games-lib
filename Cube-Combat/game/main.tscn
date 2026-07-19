@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cqow47bch5ocs"]
 
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player/player.tscn" id="1_f4tam"]
+[ext_resource type="PackedScene" uid="uid://c33a5siiniqjh" path="res://enemy/enemy.tscn" id="2_xtpaf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(53.161312, 8.312637)
@@ -50,3 +51,6 @@ offset_bottom = 40.0
 
 [node name="player" parent="." unique_id=181259765 instance=ExtResource("1_f4tam")]
 position = Vector2(256, 192)
+
+[node name="Enemy" parent="." unique_id=119227008 instance=ExtResource("2_xtpaf")]
+position = Vector2(575, 192)

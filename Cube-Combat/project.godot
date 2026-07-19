@@ -54,6 +54,11 @@ quit_match={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_2="Hitboxes"
+2d_physics/layer_3="Hurtboxes"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

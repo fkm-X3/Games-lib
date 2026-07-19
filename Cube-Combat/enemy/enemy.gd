@@ -65,3 +65,12 @@ func _on_attack_finished() -> void:
 	is_attacking = false
 	# Turn the hitbox off when the attack is over
 	collision_shape_2d.disabled = true
+
+
+var health: int = 50
+
+func reduce_health(amount: int):
+	health -= amount
+	print("Enemy health is now: ", health)
+	if health <= 0:
+		queue_free() # Destroy enemy when dead

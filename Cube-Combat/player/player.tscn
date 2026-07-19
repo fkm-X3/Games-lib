@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://ckudr8chj1kgo"]
 
-[ext_resource type="Script" uid="uid://bjupamf3a6627" path="res://player/state_machine.gd" id="1_g1dw6"]
 [ext_resource type="Script" uid="uid://csio0kgcstpl8" path="res://player/player.gd" id="1_yw30f"]
-[ext_resource type="Script" uid="uid://dwhw21fmr4sh4" path="res://player/states/move_state.gd" id="2_yw30f"]
-[ext_resource type="Script" uid="uid://kmjsc4w31t0r" path="res://player/states/attack_state.gd" id="3_qjkh3"]
+[ext_resource type="Script" uid="uid://elo023axoku6" path="res://player/hitbox.gd" id="2_rkbax"]
+[ext_resource type="Script" uid="uid://dhva16dmi64tr" path="res://player/hurtbox.gd" id="3_g1dw6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
 size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(85.5, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(80, 80)
 
 [node name="Player" type="Node2D" unique_id=181259765]
 
@@ -23,15 +28,21 @@ offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 1, 1)
 
-[node name="StateMachine" type="Node" parent="Player" unique_id=683358118 node_paths=PackedStringArray("initial_state")]
-script = ExtResource("1_g1dw6")
-initial_state = NodePath("MoveState")
-metadata/_custom_type_script = "uid://bjupamf3a6627"
+[node name="Hitbox" type="Area2D" parent="." unique_id=1125054719]
+collision_mask = 5
+script = ExtResource("2_rkbax")
 
-[node name="MoveState" type="Node" parent="Player/StateMachine" unique_id=757117755]
-script = ExtResource("2_yw30f")
-metadata/_custom_type_script = "uid://dwhw21fmr4sh4"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1559753303]
+position = Vector2(117.25, 40)
+shape = SubResource("RectangleShape2D_g4v7s")
+disabled = true
 
-[node name="AttackState" type="Node" parent="Player/StateMachine" unique_id=1747123404]
-script = ExtResource("3_qjkh3")
-metadata/_custom_type_script = "uid://kmjsc4w31t0r"
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1870510133]
+collision_layer = 5
+script = ExtResource("3_g1dw6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1164001922]
+position = Vector2(40, 40)
+shape = SubResource("RectangleShape2D_57qmd")
+
+[connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
