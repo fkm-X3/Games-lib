@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ceb0jsqenj56s"]
+
+[ext_resource type="Script" uid="uid://dbek84jn8i8oq" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://w1oepx50q1pe" path="res://player/hand.gd" id="2_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://cnw81dcu8quem" path="res://weapons/smg.tscn" id="2_yw30f"]
+[ext_resource type="PackedScene" uid="uid://b2x884ux30wr1" path="res://weapons/pistol.tscn" id="3_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://c141rduhq0bv3" path="res://weapons/rifle.tscn" id="4_g6k8r"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
+
+[node name="Player" type="CharacterBody3D" unique_id=2145217493]
+script = ExtResource("1_oul6g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1737110735]
+shape = SubResource("CapsuleShape3D_g4v7s")
+
+[node name="Head" type="Node3D" parent="." unique_id=101145728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6700679, -0.26664203)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=291820328]
+
+[node name="Hand" type="Node3D" parent="Head/Camera3D" unique_id=46961357]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0.436, -0.10643554, -0.40500003)
+script = ExtResource("2_qjkh3")
+
+[node name="AK47" parent="Head/Camera3D/Hand" unique_id=2137422518 instance=ExtResource("4_g6k8r")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+visible = false
+
+[node name="Pistol" parent="Head/Camera3D/Hand" unique_id=486962723 instance=ExtResource("3_qjkh3")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.13499999, 0, -0.18)
+visible = false
+
+[node name="SMG" parent="Head/Camera3D/Hand" unique_id=904352454 instance=ExtResource("2_yw30f")]
+visible = false

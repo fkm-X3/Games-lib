@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://c141rduhq0bv3"]
+
+[ext_resource type="Script" uid="uid://dviiyfb6txc8s" path="res://weapons/gun.gd" id="1_2masc"]
+[ext_resource type="PackedScene" uid="uid://2kmbd0541r0y" path="res://Assets/FBX/ak47.fbx" id="2_roudt"]
+[ext_resource type="AudioStream" uid="uid://cdcrkskdo8fdk" path="res://Assets/sounds/ak-47.wav" id="3_f8mbv"]
+
+[sub_resource type="Animation" id="Animation_684lp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/ak47:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/ak47:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gtjl7"]
+resource_name = "equip"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/ak47:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.2, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/ak47:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.87266463), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s3tg4"]
+resource_name = "shoot"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/ak47:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.13962634), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/ak47:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.15, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qhi8n"]
+resource_name = "unequip"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/ak47:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.2, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/ak47:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.87266463)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dvamr"]
+_data = {
+&"RESET": SubResource("Animation_684lp"),
+&"equip": SubResource("Animation_gtjl7"),
+&"shoot": SubResource("Animation_s3tg4"),
+&"unequip": SubResource("Animation_qhi8n")
+}
+
+[node name="AK47" type="Node3D" unique_id=904352454]
+script = ExtResource("1_2masc")
+damage = 5.0
+
+[node name="Model" type="Node3D" parent="." unique_id=952843932]
+
+[node name="ak47" parent="Model" unique_id=1305787943 instance=ExtResource("2_roudt")]
+
+[node name="shot_sound" type="AudioStreamPlayer" parent="." unique_id=1705062835]
+stream = ExtResource("3_f8mbv")
+
+[node name="RayCast" type="RayCast3D" parent="." unique_id=1203260001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4742726, 0.033007957, 0)
+target_position = Vector3(50, 0, 0)
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=724660152]
+libraries/ = SubResource("AnimationLibrary_dvamr")
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
